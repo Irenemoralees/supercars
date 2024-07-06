@@ -18,6 +18,13 @@ export class BookingService {
     return this.http.get<Booking[]>(`${this.url}/user/${userId}`, { headers });
   }
 
+  getAllBookings(): Observable<Booking[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.user?.token}`,
+    });
+    return this.http.get<Booking[]>(this.url, { headers });
+  }
+
   saveBooking(
     vehicleId: string,
     sDate: string,

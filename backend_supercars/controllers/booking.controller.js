@@ -61,6 +61,18 @@ const bookingController = {
         }
     },
 
+       // Obtener todas las reservas
+       getAllBookings: async (req, res) => {
+        try {
+            const bookings = await Booking.find().populate('vehicle').populate('user');
+
+            res.status(200).json(bookings);
+        } catch (error) {
+            res.status(500).json({ message: 'Error al obtener las reservas de los usuarios', error: error.message });
+        }
+    },
+
+
     // Cancelar una reserva
     cancelBooking: async (req, res) => {
         try {
