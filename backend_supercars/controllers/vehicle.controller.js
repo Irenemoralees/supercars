@@ -4,13 +4,15 @@ const vehicleController = {
     // Agregar un nuevo vehículo
     addVehicle: async (req, res) => {
         try {
-            const { brand, model, image, pricePerDay, available } = req.body;
+            const { brand, model, image, pricePerDay, year, description } = req.body;
             const newVehicle = new Vehicle({
                 brand,
                 model,
                 image,
+                year,
+                description,
                 pricePerDay,
-                available
+                available: true,
             });
 
             await newVehicle.save();
@@ -50,11 +52,13 @@ const vehicleController = {
     updateVehicle: async (req, res) => {
         try {
             const { id } = req.params;
-            const { brand, model, image, pricePerDay, available } = req.body;
+            const { brand, model, image, pricePerDay, description, year, available } = req.body;
             const updatedVehicle = await Vehicle.findByIdAndUpdate(id, {
                 brand,
                 model,
                 image,
+                description,
+                year,
                 pricePerDay,
                 available
             }, { new: true });

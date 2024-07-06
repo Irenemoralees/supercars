@@ -51,4 +51,11 @@ export class AuthService {
   isUserAdmin(): boolean {
     return this.user?.role === 'admin';
   }
+
+  getUser(): User | null {
+    if (this.user === null && this.cookieService.check('user')) {
+      this.user = JSON.parse(this.cookieService.get('user'));
+    }
+    return this.user;
+  }
 }

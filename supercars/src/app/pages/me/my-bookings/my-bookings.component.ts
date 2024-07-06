@@ -50,7 +50,8 @@ export class MyBookingsComponent {
               timer: 2000
             });
 
-            this.bookings = this.bookings.filter(x=>x._id !== bookingId)
+            window.location.reload(); // Recargar la página
+this.bookings = this.bookings.filter(x=>x._id !== bookingId)
           },
           error:()=>{
             Swal.fire({
@@ -104,7 +105,8 @@ export class MyBookingsComponent {
                 timer: 2000
               });
 
-              this.bookings = this.bookings.map(booking => 
+                window.location.reload(); // Recargar la página
+                this.bookings = this.bookings.map(booking => 
                 booking._id === bookingId ? updatedBooking : booking
               );
             },
@@ -116,6 +118,7 @@ export class MyBookingsComponent {
                 showConfirmButton: false,
                 timer: 1500
               });
+          
             }
           });
         }
