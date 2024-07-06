@@ -25,8 +25,9 @@ router.get('/my-info/:id', protect, restrictTo('user', 'admin'), userController.
 // Ruta para eliminar un usuario (solo admin)
 router.delete('/delete/:id', protect, restrictTo('admin'), userController.deleteUser);
 
+
 // Ruta para obtener todos los usuarios (solo admin)
-router.get('/users', protect, restrictTo('admin'), userController.getAllUsers);
+router.get('/all', protect, restrictTo('admin'), userController.getAllUsers);
 
 
 module.exports = router;

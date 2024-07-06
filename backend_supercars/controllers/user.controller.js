@@ -48,22 +48,23 @@ const userController = {
         }
     },
 
-    // Actualizar perfil del usuario
-    updateProfile: async (req, res) => {
-        try {
-            const { userId } = req.params;
-            const { name, email } = req.body;
-            const updatedUser = await User.findByIdAndUpdate(userId, { name, email }, { new: true });
 
-            if (!updatedUser) {
-                return res.status(404).json({ message: 'Usuario no encontrado' });
+        // Actualizar perfil del usuario
+        updateProfile: async (req, res) => {
+            try {
+                const { userId } = req.params;
+                const { name, email } = req.body;
+                const updatedUser = await User.findByIdAndUpdate(userId, { name, email }, { new: true });
+    
+                if (!updatedUser) {
+                    return res.status(404).json({ message: 'Usuario no encontrado' });
+                }
+    
+                res.status(200).json({ message: 'Perfil actualizado con éxito', user: updatedUser });
+            } catch (error) {
+                res.status(500).json({ message: 'Error al actualizar el perfil', error: error.message });
             }
-
-            res.status(200).json({ message: 'Perfil actualizado con éxito', user: updatedUser });
-        } catch (error) {
-            res.status(500).json({ message: 'Error al actualizar el perfil', error: error.message });
-        }
-    },
+        }, 
 
      // Actualizar rol del usuario
      updateUserRole: async (req, res) => {
@@ -101,16 +102,15 @@ const userController = {
             }
         },
     
-        // Obtener todos los usuarios (solo admin)
-        getAllUsers: async (req, res) => {
-            try {
-                const users = await User.find().populate('user');
-                res.status(200).json(users);
-                
-            } catch (error) {
-                res.status(500).json({ message: 'Error al obtener los usuarios', error: error.message });
-            }
-        },
+ // Obtener todos los usuarios (solo admin)
+ getAllUsers: async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener los usuarios', error: error.message });
+    }
+},
     
         // Obtener la informacion personal del usuario
         getInfoByUser: async (req, res) => {
