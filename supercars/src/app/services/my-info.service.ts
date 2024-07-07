@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -29,6 +30,38 @@ export class MyInfoService {
     return this.http.patch<User>(`${this.url}/update/${userId}`, userData, { headers });
   }
 
-  
+  deleteUser(): Observable<void> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.user?.token}`,
+    });
+    return this.http.delete<void>(`${this.url}/${this.authService.user?.id}`, { headers });
+  }
 
+  updateUserPassword(userId: string, newPassword: string): Observable<void> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.user?.token}`,
+    });
+    return this.http.patch<void>(`${this.url}/update-password/${userId}`, { password: newPassword }, { headers });
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

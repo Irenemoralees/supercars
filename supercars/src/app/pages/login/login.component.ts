@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  passwordType: string = "password"
   form!: FormGroup
   errorMessage: string = '';
 

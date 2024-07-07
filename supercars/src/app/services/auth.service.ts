@@ -46,6 +46,7 @@ export class AuthService {
   deleteUser(){
     this.user = null
     this.cookieService.delete("user")
+    window.location.reload(); // Recargar la página
   }
 
   isUserAdmin(): boolean {
