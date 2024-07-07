@@ -1,9 +1,10 @@
 <div class="container mt-4">
-    <h2>Mi Información</h2>
-    
+  <br>
+    <h1>Mi Información</h1>
+<br>
     <h3>Bienvenido {{ user?.name }}</h3>
-    <p>Correo electrónico: {{ user?.email }}</p>
-    <p>Mi rol: {{ user?.role }}</p>
+    <h4>Correo electrónico: {{ user?.email }}</h4>
+    <h4>Mi rol: {{ user?.role }}</h4>
   
     <div ngIf="user; else loading">
       <form [formGroup]="form" action="" (ngSubmit)="actualizar()">

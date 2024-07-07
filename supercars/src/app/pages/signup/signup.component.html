@@ -1,7 +1,7 @@
-<h1><i class="fa fa-user"></i> Sign up</h1>
+<h1><i class="fa fa-user"></i> Registrate aquí</h1>
 <form [formGroup]="form" (ngSubmit)="signup()" action="">
   <div class="mb-3">
-    <label class="form-label" for="">Name</label>
+    <label class="form-label" for="">Nombre</label>
     <input formControlName="name" class="form-control" type="text" />
   </div>
 
@@ -11,7 +11,7 @@
   </div>
 
   <div class="mb-3">
-    <label class="form-label" for="">Password</label>
+    <label class="form-label" for="">Contraseña</label>
 
     <div class="input-group mb-3">
         <input formControlName="pwd" [type]="passwordType" class="form-control">
@@ -27,7 +27,7 @@
       </div>
   </div>
 
-  <button class="btn btn-primary"><i class="fa fa-key"></i> Sign up</button>
+  <button class="btn btn-primary"><i class="fa fa-key"></i> Registrarse</button>
 </form>
 
 <p>
